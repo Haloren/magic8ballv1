@@ -1,4 +1,4 @@
-# class AnswerListsController < ApplicationController
+class AnswerListsController < ApplicationController
 
     
-# end
+end
