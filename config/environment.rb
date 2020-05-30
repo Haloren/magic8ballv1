@@ -1,4 +1,4 @@
-ENV['SINATRA_ENV'] ||= "development"
+ENV['SINATRA_ENV'] ||= "development" #hash ENV key SINATRA_ENV or if doesn't exist development  
 
 require 'bundler/setup'
 Bundler.require(:default, ENV['SINATRA_ENV'])
@@ -8,5 +8,4 @@ ActiveRecord::Base.establish_connection(
   :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
 )
 
-# require './app/controllers/application_controller'
 require_all 'app'
