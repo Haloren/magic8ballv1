@@ -18,3 +18,5 @@ set :database, database_config
 
 require './app/controllers/application_controller'
 require_all 'app'
+
+# https://www.youtube.com/watch?v=dQSsFYwSudM start @ 28:00
