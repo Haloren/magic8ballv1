@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 #get and post for: /login and /create_account
 #get /logout
     get '/create_account' do
-        "Create Account landing page."
+        erb :'users/create_account' #Create Account landing page.
+        
     end
 
     post '/create_account' do
@@ -10,7 +11,8 @@ class UsersController < ApplicationController
     end
 
     get '/login' do 
-        "Login landing page."
+        erb :'users/login' #Login landing page.
+        
     end
 
     post '/login' do
@@ -18,7 +20,9 @@ class UsersController < ApplicationController
     end
 
     get '/logout' do
-        "Logout" #redirect to ('/')
+        #destroy/clear session and redirect to ('/')
+        session.destroy
+        redirect to ('/')
     end
 
 end
