@@ -22,4 +22,5 @@ class ApplicationController < Sinatra::Base
             !!current_account
         end
     end
+    
 end
