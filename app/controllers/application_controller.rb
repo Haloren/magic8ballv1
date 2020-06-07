@@ -15,12 +15,12 @@ class ApplicationController < Sinatra::Base
 
     helpers do
         def current_account
-            @current_account ||= User.find_by(id: session[:id])
+            @current_account ||= User.find_by(id: session[:user_id])
         end
 
         def logged_in?
             !!current_account
         end
     end
-    
+
 end
