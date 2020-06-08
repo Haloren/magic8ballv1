@@ -7,7 +7,8 @@ class UsersController < ApplicationController
     end
 
     post '/create_account' do
-
+        # redirect to ('/index')
+        #erb :'users/create_account'  #if fails start again
     end
 
     get '/login' do 
@@ -16,7 +17,8 @@ class UsersController < ApplicationController
     end
 
     post '/login' do
-
+        # redirect to ('/index')
+        #erb :'users/login'  #if fails start again
     end
 
     get '/logout' do
