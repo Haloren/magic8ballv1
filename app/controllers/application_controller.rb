@@ -5,11 +5,12 @@ class ApplicationController < Sinatra::Base
     configure do 
         set :public_folder, "public"
         set :views, "app/views"
-        enable :sessions
+        enable :sessions #allows you to call a sessions hash anywhere
         set :session_secret, "8BallSecret"
     end
 
     get "/" do
+        # binding.pry
         erb :welcome
     end
 
