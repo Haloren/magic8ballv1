@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_05_30_042525) do
   end
 
   create_table "answers", force: :cascade do |t|
-    t.string "answer"
+    t.string "content"
     t.integer "answer_list_id"
   end
 
