@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     end
 
     post '/create_account' do
-        # binding.pry #to check that I have created a user
+        # binding.pry #check that I have created a user
         # @user = User.create(username: params[:username], email: params[:email], password: params[:password])
         user = User.create(params) #using all the params for User so don't need to call each individually
         redirect to "/users/#{user.id}"
@@ -14,9 +14,9 @@ class UsersController < ApplicationController
     end
 
     get '/users/:id' do
-        # binding.pry
+        #binding.pry 
         @user = User.find_by(id: params[:id]) #find_by returns "null", find makes an error
-        erb :'users/index'
+        erb :'users/ask_question'
     end
 
     get '/login' do 
