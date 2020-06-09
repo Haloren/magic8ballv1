@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_05_30_042525) do
 
   create_table "answer_lists", force: :cascade do |t|
-    t.string "name"
+    t.string "list_name"
     t.integer "user_id"
   end
 

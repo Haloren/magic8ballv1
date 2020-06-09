@@ -1,0 +1,14 @@
+<%# Ask Your Question %>
+
+<h1> What is your question? </h1>
+<form>
+    <textarea name="question" rows="4" cols="50"></textarea>
+</form>
+<br>
+<h3> Answer List Name </h3>
+<p><a href="/answer_lists/index"> Change Answer List </a></p>
+
+<p><a href="/users/eightball_answer"> Shake the Eight Ball </a><p> 
+
+<br>
+<p><small>Logged in: <%= @user.username %></small><p>
