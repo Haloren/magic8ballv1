@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     post '/create_account' do
         # binding.pry #to check that I have created a user
         # @user = User.create(username: params[:username], email: params[:email], password: params[:password])
-        @user = User.create(params) #using all the params for User so don't need to call each individually
+        user = User.create(params) #using all the params for User so don't need to call each individually
         redirect to "/users/#{user.id}"
         #erb :'users/create_account'  #if fails start again
     end
@@ -25,7 +25,9 @@ class UsersController < ApplicationController
     end
 
     post '/login' do
-        # redirect to ('/index')
+        user = User.find_by(username: params[:username])
+        user && user.authenticate(params[:password])
+        redirect to "/users/#{user.id}"
         #erb :'users/login'  #if fails start again
     end
 
