@@ -22,6 +22,14 @@ class ApplicationController < Sinatra::Base
         def logged_in?
             !!current_account
         end
+
+        def display_logged_in_user
+            if User.find_by(id: params[:id])
+                @user.username
+            else
+                " "
+            end
+        end
     end
 
 end

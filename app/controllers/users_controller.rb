@@ -15,7 +15,11 @@ class UsersController < ApplicationController
 
     get '/users/:id' do #dynamic route with argument of the users_id
         #binding.pry 
-        @user = User.find_by(id: params[:id]) #find_by returns "null", find makes an error
+        if User.find_by(id: params[:id])
+            @user = User.find_by(id: params[:id]) #find_by returns "null", find makes an error
+        else
+            redirect to '/login'
+        end
         erb :'users/ask_question'
     end
 
