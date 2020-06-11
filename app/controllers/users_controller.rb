@@ -30,14 +30,17 @@ class UsersController < ApplicationController
 
     get '/login' do 
         erb :'users/login' # Login landing page.
-        
     end
 
     post '/login' do
-        user = User.find_by(username: params[:username])
-        user && user.authenticate(params[:password])
-        redirect to "/users/#{user.id}"
-        #erb :'users/login'  # if fails start again
+        user = User.find_by(email: params[:email])
+       
+        if user && user.authenticate(params[:password])
+            redirect to "/users/#{user.id}"
+        else
+            erb :'users/login'  # if fails start again
+        end
+        
     end
 
     get '/logout' do
