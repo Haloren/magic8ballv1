@@ -9,9 +9,13 @@
             <%= yield %>
 
             <footer>
-                <br><br>
-                 <small><a href="/logout">LOG OUT [ Username goes HERE ]</a>
-                &copy;2020 MagicEightBallv1</small>
+                <br>
+                
+                <% if @user %>
+                    <small><a href="/logout">LOG OUT [ <%= @user.username %> ]</a></small>
+                <% end %>
+                <small> &copy;2020 MagicEightBallv1 </small>
+
             </footer>
 
         </div>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    
+      
     get '/create_account' do
         if Helpers.logged_in?(session)
             user = Helpers.current_user(session)
