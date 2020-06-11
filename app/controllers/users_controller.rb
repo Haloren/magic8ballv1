@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
     
     get '/create_account' do
-        erb :'users/create_account' #Create Account landing page.
-        
+        if Helpers.logged_in?(session)
+            user = Helpers.current_user(session)
+            redirect to "/users/#{user.id}"
+        else
+            erb :'users/create_account'     
+        end
+
     end
 
     post '/create_account' do
@@ -29,7 +34,11 @@ class UsersController < ApplicationController
     end
 
     get '/login' do 
-        erb :'users/login' # Login landing page.
+        if Helpers.logged_in?(session)
+            user = Helpers.current_user(session)
+            redirect to "/users/#{user.id}"
+        end
+            erb :'users/login'
     end
 
     post '/login' do

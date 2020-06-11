@@ -11,25 +11,7 @@ class ApplicationController < Sinatra::Base
 
     get "/" do
         # binding.pry
-        erb :welcome
-    end
-
-    helpers do
-        def current_account
-            @current_account ||= User.find_by(id: session[:user_id])
-        end
-
-        def logged_in?
-            !!current_account
-        end
-
-        def display_logged_in_user
-            if User.find_by(id: params[:id])
-                @user.username
-            else
-                " "
-            end
-        end
+        erb :welcome #v2 erb :user/login
     end
 
 end
