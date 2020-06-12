@@ -2,7 +2,7 @@ class UsersController < ApplicationController
       
     get '/create_account' do
         if Helpers.logged_in?(session)
-            user = Helpers.current_user(session)
+            user = Helpers.current_account(session)
             redirect to "/users/#{user.id}"
         else
             erb :'users/create_account'     
@@ -34,8 +34,9 @@ class UsersController < ApplicationController
     end
 
     get '/login' do 
+        # binding.pry
         if Helpers.logged_in?(session)
-            user = Helpers.current_user(session)
+            user = Helpers.current_account(session)
             redirect to "/users/#{user.id}"
         end
             erb :'users/login'
@@ -45,6 +46,7 @@ class UsersController < ApplicationController
         user = User.find_by(email: params[:email])
        
         if user && user.authenticate(params[:password])
+            session[:user_id] = user.id
             redirect to "/users/#{user.id}"
         else
             erb :'users/login'  # if fails start again
