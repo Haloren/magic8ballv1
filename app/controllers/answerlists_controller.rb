@@ -3,9 +3,13 @@ class AnswerListsController < ApplicationController
     get '/answer' do
         erb :'users/eightball_answer'
     end
+
+    post '/answer' do
+        erb :'users/eightball_answer'
+    end
     
-    get '/lists' do
-        erb :'answer_lists/create_list'
+    get '/lists/new' do
+        erb :'answer_lists/select_list'
         
     end
        

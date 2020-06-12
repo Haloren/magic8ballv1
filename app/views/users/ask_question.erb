@@ -1,13 +1,11 @@
-<%# Ask Your Question %>
-
 <h1> What is your question? </h1>
-<form>
-    <textarea name="question" rows="4" cols="50"></textarea>
+<form action="/answer" method="POST">
+    <textarea name="question" placeholder="Type your question here" rows="4" cols="50"></textarea>
+    
+    <br>
+    <input type="submit" value="SHAKE THE EIGHT BALL">
+
+    <br>
+    <p><a href="/lists">Answer List Name (click to choose a different list) </a></p>
+
 </form>
-<br>
-<h3> Answer List Name </h3>
-<p><a href="/lists"> Change Answer List </a></p>
-
-<p><a href="/answer"> Shake the Eight Ball </a><p> 
-
-<br>

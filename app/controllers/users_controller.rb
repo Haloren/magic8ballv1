@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
     get '/users/:id' do # dynamic route with argument of the users_id
         # binding.pry 
-        if User.find_by(id: params[:id])
+        if Helpers.logged_in?(session) && User.find_by(id: params[:id])
             @user = User.find_by(id: params[:id]) # find_by returns "null", find makes an error
         else
             redirect to '/login'
