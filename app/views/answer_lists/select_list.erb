@@ -1,19 +1,23 @@
-<%# index page %>
+ <h2>Displays Lists Available to Interact With</h2>
 
-<h1>Which List would you like to USE or UPDATE?</h1>
-    <p>List 1</p>
-    <p>List 2</p>
-    <p>List 3</p>
-    <p>List 4</p>
-    <p>List 5</p>
-    <p>List 6</p>
-    <p>List 7</p>
-    <p>List 8</p>
-<h3>Clicking on a List Above Displays Here</h3>
-
-<h4>Link that will Update the Answer List on Ask Your Question Page</h4>
-<h4>Link that will take them to answer_lists/update_list.erb</h4>
+<h3><b>SELECTED LIST DISPLAYS HERE</b></h3>
 <form action=" " method="POST">
-    <input type="hidden" id="hidden" name="_method" value="DELETE" />
-    <input type="submit" value="DELETE ENTRY">
-</form>
+    <input type="hidden" name="_method" value="select">
+    <input type="submit" value="SELECT LIST">
+</form><br>
+
+<form action=" " method="POST">
+    <input type="hidden" name="_method" value="update">
+    <input type="submit" value="UPDATE LIST">
+</form><br>
+
+<form action=" " method="POST">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="DELETE LIST">
+</form><br>
+
+<h3>Would you like to create a new list?</h3>
+<form action=" " method="POST">
+    <input type="hidden" name="_method" value="create">
+    <input type="submit" value="CREATE LIST">
+</form><br>

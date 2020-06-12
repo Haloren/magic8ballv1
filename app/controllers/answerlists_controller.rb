@@ -10,12 +10,12 @@ class AnswerListsController < ApplicationController
         
     end
        
-    get '/lists' do
+    get '/answerlists' do
         @lists = AnswerLists.all
         erb :'answer_lists/select_list'
     end
 
-    post '/lists' do
+    post '/answerlists' do
 
     end
     
