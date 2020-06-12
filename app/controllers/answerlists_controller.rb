@@ -1,31 +1,38 @@
 class AnswerListsController < ApplicationController
 
-    get '/lists/new' do
+    get '/answerlists' do
+        if logged_in?
+            erb :'answer_lists/select_list'
+        else
+            redirect to '/login'
+        end
+    end
+
+    post '/answerlists' do
+
+    end
+
+    get '/answerlists/new' do
         if !Helpers.logged_in?(session)
             redirect '/'
         end
         erb :'answer_lists/new_list'
     end
        
-    post 'list/new' do
-        
-    end
-
-    get '/answerlists' do
-        @lists = AnswerLists.all
-        erb :'answer_lists/select_list'
-    end
-
-    post '/answerlists' do
+    get '/answerlists/:id' do
 
     end
-    
-    get '/answer' do
-        erb :'users/eightball_answer'
+
+    get '/answerlists/:id/edit' do
+
     end
 
-    post '/answer' do
-        erb :'users/eightball_answer'
+    patch '/answerlists/:id' do
+
+    end
+
+    delete '/answerlists/:id/delete' do
+
     end
     
 end

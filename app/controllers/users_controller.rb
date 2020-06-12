@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
       
     get '/create_account' do
-        if Helpers.logged_in?(session)
-            user = Helpers.current_account(session)
+        if logged_in?
             redirect to "/users/#{user.id}"
         else
             erb :'users/create_account'     
@@ -23,20 +22,9 @@ class UsersController < ApplicationController
 
     end
 
-    get '/users/:id' do # dynamic route with argument of the users_id
-        # binding.pry 
-        if Helpers.logged_in?(session) && User.find_by(id: params[:id])
-            @user = User.find_by(id: params[:id]) # find_by returns "null", find makes an error
-        else
-            redirect to '/login'
-        end
-        erb :'users/ask_question'
-    end
-
     get '/login' do 
         # binding.pry
-        if Helpers.logged_in?(session)
-            user = Helpers.current_account(session)
+        if logged_in?
             redirect to "/users/#{user.id}"
         end
             erb :'users/login'
@@ -53,6 +41,25 @@ class UsersController < ApplicationController
         end
         
     end
+
+    get '/users/:id' do # dynamic route with argument of the users_id
+        # binding.pry 
+        if logged_in? && User.find_by(id: params[:id])
+            @user = User.find_by(id: params[:id]) # find_by returns "null", find makes an error
+        else
+            redirect to '/login'
+        end
+        erb :'users/ask_question'
+    end
+
+    get '/users/:id/answer' do
+        erb :'users/eightball_answer'
+    end
+
+    post 'users/:id/answer' do
+        erb :'users/eightball_answer'
+    end
+
 
     get '/logout' do
         # destroy/clear session and redirect to ('/')
