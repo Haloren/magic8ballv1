@@ -5,7 +5,10 @@
 
     <body>
         <div>
-          
+            <% if @user %>
+                <small><b><a href="/users/<%= current_account.id %>">HOME</a></b></small>
+            <% end %>
+
             <%= yield %>
 
             <footer>
