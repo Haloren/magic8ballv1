@@ -2,11 +2,10 @@ class UsersController < ApplicationController
       
     get '/create_account' do
         if logged_in?
-            redirect to "/users/#{user.id}"
+            redirect to "/users/#{current_account.id}"
         else
             erb :'users/create_account'     
         end
-
     end
 
     post '/create_account' do
@@ -19,13 +18,12 @@ class UsersController < ApplicationController
         else 
             erb :'users/create_account'  # if fails start again
         end    
-
     end
 
     get '/login' do 
         # binding.pry
         if logged_in?
-            redirect to "/users/#{user.id}"
+            redirect to "/users/#{current_account.id}"
         end
             erb :'users/login'
     end

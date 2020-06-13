@@ -12,9 +12,9 @@ class ApplicationController < Sinatra::Base
     get "/" do
         # binding.pry
         if logged_in?
-            redirect to '/users/:id'
+            redirect to "/users/:id"
         else 
-            erb :welcome #v2 erb :user/login
+            erb :'users/login'
         end
     end
     
@@ -22,15 +22,10 @@ class ApplicationController < Sinatra::Base
         def current_account
             @current_account ||= User.find_by(id: session[:user_id])
         end
-        # def self.current_account(session)
-        #     User.find_by(id: session[:user_id])
-        # end
+       
         def logged_in?
             !!current_account 
         end
-        # def self.logged_in?(session)
-        #     session[:user_id] ? true : false
-        # end
     end
     
 end

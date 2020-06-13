@@ -13,10 +13,11 @@ class AnswerListsController < ApplicationController
     end
 
     get '/answerlists/new' do
-        if !Helpers.logged_in?(session)
+        if logged_in?
+            erb :'answer_lists/new_list'
+        else
             redirect '/'
-        end
-        erb :'answer_lists/new_list'
+        end  
     end
        
     get '/answerlists/:id' do
