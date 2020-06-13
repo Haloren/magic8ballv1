@@ -2,6 +2,7 @@ class AnswerListsController < ApplicationController
 
     get '/answerlists' do
         if logged_in?
+            #@answerlists = current_account.answerlists
             erb :'answer_lists/select_list'
         else
             redirect to '/login'
