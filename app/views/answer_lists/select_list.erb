@@ -1,12 +1,8 @@
  <h2>Answer Lists</h2>
 
 <h3><b>SELECTED LIST DISPLAYS HERE</b></h3>
-
 <ul>
-    <% answer_lists.each do |list| %>
-        <% if answer_list.user_id == current_account.id %>
-        <li><a href="/answerlists/<%= answer_list.id %>"<%= answer_list.content %>></li>
-    <% end %>
+   <p><a href="/answerlists/traditional">Traditional Eight Ball</a></p>
 
     <p><a href="/answerlists/new">Create a new list?</a></p>
 
