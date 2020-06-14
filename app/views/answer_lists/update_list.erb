@@ -1,39 +1,39 @@
-<h1>Update <%= @answerlist.title %> here</h1>
+<h1>Update <%= @answer_list.answer %> here</h1>
 
-<form action="/answerlists/<%= @answerlist.id %>%" method="POST"> 
+<form action="/answerlists/<%= @answer_list.id %>%" method="POST"> 
     <input type="hidden" name="_method" value="PATCH">
     
-    <input type="text" name="name" value="<%= @answerlist.title%>">
+    <input type="text" name="name" value="<%= @answer_list.answer%>">
     <br>
     <input type="submit" id="Update List">
 
-    <br><input type="text" name="1" value="<%= @answerlist.answer%>" maxlength="25">
-    <br><input type="text" name="2" value="<%= @answerlist.answer%>" maxlength="25">
-    <br><input type="text" name="3" value="<%= @answerlist.answer%>" maxlength="25">
-    <br><input type="text" name="4" value="<%= @answerlist.answer%>" maxlength="25">
-    <br><input type="text" name="5" value="<%= @answerlist.answer%>" maxlength="25">
-    <br><input type="text" name="6" value="<%= @answerlist.answer%>" maxlength="25">
-    <br><input type="text" name="7" value="<%= @answerlist.answer%>" maxlength="25">
-    <br><input type="text" name="8" value="<%= @answerlist.answer%>" maxlength="25">
-    <br><input type="text" name="9" value="<%= @answerlist.answer%>" maxlength="25">
-    <br><input type="text" name="10" value="<%= @answerlist.answer%>" maxlength="25">
-    <br><input type="text" name="11" value="<%= @answerlist.answer%>" maxlength="25">
-    <br><input type="text" name="12" value="<%= @answerlist.answer%>" maxlength="25">
-    <br><input type="text" name="13" value="<%= @answerlist.answer%>" maxlength="25">
-    <br><input type="text" name="14" value="<%= @answerlist.answer%>" maxlength="25">
-    <br><input type="text" name="15" value="<%= @answerlist.answer%>" maxlength="25">
-    <br><input type="text" name="16" value="<%= @answerlist.answer%>" maxlength="25">
-    <br><input type="text" name="17" value="<%= @answerlist.answer%>" maxlength="25">
-    <br><input type="text" name="18" value="<%= @answerlist.answer%>" maxlength="25">
-    <br><input type="text" name="19" value="<%= @answerlist.answer%>" maxlength="25">
-    <br><input type="text" name="20" value="<%= @answerlist.answer%>" maxlength="25">
+    <br><input type="text" name="ans1" value="<%= @answer_list.answer%>" maxlength="25">
+    <br><input type="text" name="ans2" value="<%= @answer_list.answer%>" maxlength="25">
+    <br><input type="text" name="ans3" value="<%= @answer_list.answer%>" maxlength="25">
+    <br><input type="text" name="ans4" value="<%= @answer_list.answer%>" maxlength="25">
+    <br><input type="text" name="ans5" value="<%= @answer_list.answer%>" maxlength="25">
+    <br><input type="text" name="ans6" value="<%= @answer_list.answer%>" maxlength="25">
+    <br><input type="text" name="ans7" value="<%= @answer_list.answer%>" maxlength="25">
+    <br><input type="text" name="ans8" value="<%= @answer_list.answer%>" maxlength="25">
+    <br><input type="text" name="ans9" value="<%= @answer_list.answer%>" maxlength="25">
+    <br><input type="text" name="ans10" value="<%= @answer_list.answer%>" maxlength="25">
+    <br><input type="text" name="ans11" value="<%= @answer_list.answer%>" maxlength="25">
+    <br><input type="text" name="ans12" value="<%= @answer_list.answer%>" maxlength="25">
+    <br><input type="text" name="ans13" value="<%= @answer_list.answer%>" maxlength="25">
+    <br><input type="text" name="ans14" value="<%= @answer_list.answer%>" maxlength="25">
+    <br><input type="text" name="ans15" value="<%= @answer_list.answer%>" maxlength="25">
+    <br><input type="text" name="ans16" value="<%= @answer_list.answer%>" maxlength="25">
+    <br><input type="text" name="ans17" value="<%= @answer_list.answer%>" maxlength="25">
+    <br><input type="text" name="ans18" value="<%= @answer_list.answer%>" maxlength="25">
+    <br><input type="text" name="ans19" value="<%= @answer_list.answer%>" maxlength="25">
+    <br><input type="text" name="ans20" value="<%= @answer_list.answer%>" maxlength="25">
     <br>
     <input type="submit" id="Update List">
 
     <p><a href="/answerlists">GO BACK</a></p>
 </form>
 
-<form action="/answerlists/<%=@answerlist.id%>/delete" method="POST">
+<form action="/answerlists/<%=@answer_list.id%>/delete" method="POST">
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="DELETE LIST">
 </form><br>

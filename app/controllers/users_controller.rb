@@ -11,11 +11,12 @@ class UsersController < ApplicationController
     post '/create_account' do
         # binding.pry #check that I have created a user
         # @user = User.create(username: params[:username], email: params[:email], password: params[:password])
-        user = User.create(params)
-        if user.valid? 
-            session[:user_id] = user.id # session = user id
-            redirect to "/users/#{user.id}"
+        @user = User.create(params)
+        if @user.valid? 
+            session[:user_id] = @user.id # session = user id
+            redirect to "/users/#{@user.id}"
         else 
+            @errors = @user.errors.full_messages
             erb :'users/create_account'  # if fails start again
         end    
     end
@@ -29,12 +30,13 @@ class UsersController < ApplicationController
     end
 
     post '/login' do
-        user = User.find_by(email: params[:email])
+        @user = User.find_by(email: params[:email])
        
-        if user && user.authenticate(params[:password])
-            session[:user_id] = user.id
-            redirect to "/users/#{user.id}"
+        if @user && @user.authenticate(params[:password])
+            session[:user_id] = @user.id
+            redirect to "/users/#{@user.id}"
         else
+            @errors = "[\"Incorrect email and/or password\"]"
             erb :'users/login'  # if fails start again
         end
         

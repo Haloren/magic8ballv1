@@ -5,7 +5,7 @@
 
     <body>
         <div>
-            <% if @user %>
+            <% if logged_in?%>
                 <small><b><a href="/users/<%= current_account.id %>">HOME</a></b></small>
             <% end %>
 
@@ -14,7 +14,7 @@
             <footer>
                 <br><br>
                 
-                <% if @user %>
+                <% if logged_in? %>
                     <small><b><a href="/logout">LOG OUT [ <%= @user.username %> ]</a></b></small>
                 <% end %>
                 <small><b> &copy;2020 MagicEightBallv1 </b></small>

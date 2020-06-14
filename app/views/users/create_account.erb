@@ -1,6 +1,9 @@
 <h1>Magic Eight Ball</h1>
 
-<br>
+<% if @errors %>
+    <p style="color: #FF0000;"><%= @errors %><p>
+<% end %>
+
 <form action="/create_account" method="POST">
 
     <input type="text" placeholder="Name" name="username" required>
