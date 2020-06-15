@@ -16,7 +16,15 @@ class AnswerListsController < ApplicationController
     end
 
     post '/answerlists' do
-
+        @answer_list = AnswerList.create(params)
+        if logged_in? 
+            @user = current_account
+            session[:user_id] = @user.id # session = user id
+            redirect to "/answerlists"
+        else 
+            @errors = @user.errors.full_messages
+            erb :'answer_lists/new_list'  # if fails start again
+        end    
     end
 
     get '/answerlists/traditional' do

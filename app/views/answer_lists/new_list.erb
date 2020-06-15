@@ -1,6 +1,10 @@
 <h1>Create an Answer List </h1>
 
-<form action="/answerlists/new" method="post">
+<% if @errors %>
+    <p style="color: #FF0000;"><%= @errors %><p>
+<% end %>
+
+<form action="/answerlists" method="post">
 
     <input type="submit" value="Create List">
     <br>
