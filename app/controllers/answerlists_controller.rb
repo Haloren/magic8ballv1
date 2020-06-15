@@ -1,5 +1,9 @@
 class AnswerListsController < ApplicationController
 
+    post '/answer' do
+        erb :'users/eightball_answer'
+    end
+
     get '/answerlists' do
         if logged_in?
             #@answerlists = current_account.answerlists

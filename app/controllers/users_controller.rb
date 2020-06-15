@@ -2,7 +2,7 @@ class UsersController < ApplicationController
       
     get '/create_account' do
         if logged_in?
-            redirect to "/users/#{current_account.id}"
+            redirect to "/ask_the_eightball"
         else
             erb :'users/create_account'     
         end
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
         @user = User.create(params)
         if @user.valid? 
             session[:user_id] = @user.id # session = user id
-            redirect to "/users/#{@user.id}"
+            redirect to "/ask_the_eightball"
         else 
             @errors = @user.errors.full_messages
             erb :'users/create_account'  # if fails start again
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     get '/login' do 
         # binding.pry
         if logged_in?
-            redirect to "/users/#{current_account.id}"
+            redirect to "/ask_the_eightball"
         end
             erb :'users/login'
     end
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
        
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
-            redirect to "/users/#{@user.id}"
+            redirect to "/ask_the_eightball"
         else
             @errors = "[\"Incorrect email and/or password\"]"
             erb :'users/login'  # if fails start again
@@ -42,14 +42,17 @@ class UsersController < ApplicationController
         
     end
 
-    get '/users/:id' do # dynamic route with argument of the users_id
-        # binding.pry 
-        if logged_in? && User.find_by(id: params[:id])
-            @user = User.find_by(id: params[:id]) # find_by returns "null", find makes an error
+    get '/ask_the_eightball' do
+        # binding.pry
+        authenticate
+        if logged_in?
+            @user = current_account
+            erb :'users/ask_question'
         else
             redirect to '/login'
         end
-        erb :'users/ask_question'
+        # @user = current_account
+        # erb :'users/ask_question'
     end
 
     get '/users/:id/answer' do

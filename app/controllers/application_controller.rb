@@ -24,8 +24,13 @@ class ApplicationController < Sinatra::Base
         end
        
         def logged_in?
-            !!current_account 
+            !!current_account #nil into false & user object true
         end
+
+        def authenticate
+            redirect '/login' if !logged_in?
+        end
+
     end
     
 end
