@@ -1,7 +1,28 @@
 <h1>Question asked displayed here</h1>
 
-<h3>Random Answer Displayed here</h3>
+<% answer = ["As I see it, yes.",
+"Ask again later.",
+"Better not tell you now.",
+"Cannot predict now.",
+"Concentrate and ask again.",
+"Don’t count on it.",
+"It is certain.",
+"It is decidedly so.",
+"Most likely.",
+"My reply is no.",
+"My sources say no.",
+"Outlook not so good.",
+"Outlook good.",
+"Reply hazy, try again.",
+"Signs point to yes.",
+"Very doubtful.",
+"Without a doubt.",
+"Yes.",
+"Yes – definitely.",
+"You may rely on it."].sample %>
+<h3><%= answer %></h3>
 
-<p>Shake Again (reloads page to get a new random answer)</p>
+<button onClick="window.location.reload();">SHAKE AGAIN</button>
 
-<h3>Enter a new Question (Link back to users/index)</h3>
+<br>
+<p><a href="/ask_the_eightball">ASK A NEW QUESTION</a></p>
