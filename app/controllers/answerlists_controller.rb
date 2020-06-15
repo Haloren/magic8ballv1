@@ -1,11 +1,13 @@
 class AnswerListsController < ApplicationController
 
     post '/answer' do
+        @user = current_account
         erb :'users/eightball_answer'
     end
 
     get '/answerlists' do
         if logged_in?
+            @user = current_account
             #@answerlists = current_account.answerlists
             erb :'answer_lists/select_list'
         else
@@ -18,12 +20,13 @@ class AnswerListsController < ApplicationController
     end
 
     get '/answerlists/traditional' do
-            erb :'answer_lists/traditional_list'       
+        @user = current_account
+        erb :'answer_lists/traditional_list'       
     end
 
     get '/answerlists/new' do
         if logged_in?
-            @current_account
+            @user = current_account
             erb :'answer_lists/new_list'
         else
             redirect '/'
@@ -43,6 +46,7 @@ class AnswerListsController < ApplicationController
     end
 
     delete '/answerlists/:id/delete' do
+        @user = current_account
         @answer_list = AnswerList.find(params[:id])
         @answer_list.destroy
         redirect to '/answerlists'

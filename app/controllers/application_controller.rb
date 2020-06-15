@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
         set :public_folder, "public"
         set :views, "app/views"
         enable :sessions #allows you to call a sessions hash anywhere
-        set :session_secret, ENV['SESSION_SECRET']
+        set :session_secret, "8BallSecret" # "#{ENV['SESSION_SECRET']}"
     end
 
     get "/" do
