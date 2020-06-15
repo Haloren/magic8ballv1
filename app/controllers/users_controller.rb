@@ -53,15 +53,6 @@ class UsersController < ApplicationController
         end
     end
 
-    get '/users/:id/answer' do
-        erb :'users/eightball_answer'
-    end
-
-    post 'users/:id/answer' do
-        erb :'users/eightball_answer'
-    end
-
-
     get '/logout' do
         # destroy/clear session and redirect to ('/')
         session.destroy

@@ -2,22 +2,26 @@
 <h1>Magic Eight Ball</h1>
 
 <form action="/answer" method="POST">
+    
     <textarea name="question" placeholder="Enter your question here" rows="4" cols="50"></textarea>
     
     <br>
+    <label>Choose your answer list:</label>
+    <select name="answerlists" >
+            <option value="default" selected>Magic Eight Ball</option>
+            <option value="list2">List 2</option>
+            <option value="list3">List 3</option>
+            <option value="list4">List 4</option>
+            <option value="list5">List 5</option>
+            <option value="list6">List 6</option>
+            <option value="list7">List 7</option>
+            <option value="list8">List 8</option>
+    </select>
+    
+    <br><br>
     <input type="submit" value="SHAKE THE EIGHT BALL">
 
 </form>
 
-<h2><select name="answerlists" size="1">
-    <option>Traditional Eight Ball</option>
-    <option value="list2">List 2</option>
-    <option value="list3">List 3</option>
-    <option value="list4">List 4</option>
-    <option value="list5">List 5</option>
-    <option value="list6">List 6</option>
-    <option value="list7">List 7</option>
-    <option value="list8">List 8</option>
-</select></h2>
-
-<a href="/answerlists"> [Update or Create a New List] </a>
+<br>
+<p><a href="/answerlists"> [Update or Create a New List] </a><p>

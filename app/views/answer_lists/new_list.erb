@@ -1,9 +1,5 @@
 <h1>Create an Answer List </h1>
 
-<% if @errors %>
-    <p style="color: #FF0000;"><%= @errors %><p>
-<% end %>
-
 <form action="/answerlists" method="post">
 
     <input type="submit" value="Create List">
@@ -32,7 +28,5 @@
     <br><input type="text" placeholder="Add an Answer HERE" name="ans20" maxlength="25">
     <br>
     <input type="submit" value="Create List">
-    
-    <p><a href="/answerlists">GO BACK</a></p>
 
 </form>
