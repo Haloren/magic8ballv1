@@ -16,9 +16,9 @@ class AnswerListsController < ApplicationController
     end
 
     post '/answerlists' do
-        @answer_list = AnswerList.create(params)
         if logged_in? 
             @user = current_account
+            @answer_list = current_account.answer_lists.build(params)
             session[:user_id] = @user.id # session = user id
             redirect to "/answerlists"
         else 
@@ -27,17 +27,12 @@ class AnswerListsController < ApplicationController
         end    
     end
 
-    get '/answerlists/traditional' do
-        @user = current_account
-        erb :'answer_lists/traditional_list'       
-    end
-
     get '/answerlists/new' do
         if logged_in?
             @user = current_account
             erb :'answer_lists/new_list'
         else
-            redirect '/'
+            redirect to '/login'
         end  
     end
        

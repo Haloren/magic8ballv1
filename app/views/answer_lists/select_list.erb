@@ -1,10 +1,17 @@
  <h2>Answer Lists</h2>
 
-<h3><b>SELECTED LIST DISPLAYS HERE</b></h3>
-<ul>
-   
-    <li><a href="/answerlists/traditional">Traditional Eight Ball</a></li>
+<p> Traditional Magic Eight Ball </p>
+
+<% if current_account.answer_lists.length > 0 %>
+    <ul>
+    <% current_account.answer_lists.each do |list| %>
+        <li><a href="/answerlists/<%= list.id %>"><%= list.name %></a></li>
+    <% end %>
+    </ul>
+<% else %>
+    <p> No answer lists saved </p>
+<% end %>
 
     <li><a href="/answerlists/new">Create a new list?</a></li>
 
-</ul>
+
