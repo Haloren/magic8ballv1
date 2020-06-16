@@ -31,7 +31,7 @@ class AnswerListsController < ApplicationController
     get '/answerlists' do
         if logged_in?
             @user = current_account
-            #@answerlists = current_account.answerlists
+            #@answerlists = current_account.answer_lists
             erb :'answer_lists/select_list'
         else
             redirect to '/login'
@@ -39,16 +39,17 @@ class AnswerListsController < ApplicationController
     end
 
     post '/answerlists' do
-        if logged_in? 
-            # binding.pry
-            @user = current_account
-            @answer_list = current_account.answer_lists.build(params)
-            session[:user_id] = @user.id # session = user id
-            redirect to "/answerlists"
-        else 
-            @errors = @user.errors.full_messages
-            erb :'answer_lists/new_list'  # if fails start again
-        end    
+        # binding.pry
+        @user = current_account
+
+        @list = AnswerList.create(params)    
+        if @list.valid?
+            session[answer_list_id] = @answer_list.id
+            redirect to '/answerlists'
+        else
+            @errors = @answer_list.errors.full_messages
+            erb :'answer_lists/new_list'
+        end        
     end
 
     get '/answerlists/new' do
@@ -61,22 +62,33 @@ class AnswerListsController < ApplicationController
     end
        
     get '/answerlists/:id' do
+        @user = current_account
         erb :'answer_lists/select_list'
     end
 
     get '/answerlists/:id/update' do
-        erb :'answer_lists/update_list'
+        if logged_in?
+            @user = current_account 
+            erb :'answer_lists/update_list'
+        else 
+            redirect to '/login'
+        end
     end
 
     patch '/answerlists/:id' do
+        @user = current_account
         erb :'answer_lists/update_list'
     end
 
     delete '/answerlists/:id/delete' do
         @user = current_account
         @answer_list = AnswerList.find(params[:id])
-        @answer_list.destroy
-        redirect to '/answerlists'
+        if logged_in? && @answer_list.user == current_account
+            @answer_list.destroy
+            redirect to '/answerlists'
+        else
+            redirect to '/login'
+        end
     end
     
 end
