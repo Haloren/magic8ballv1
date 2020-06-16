@@ -1,6 +1,7 @@
 class AnswerListsController < ApplicationController
 
     post '/answer' do
+        # binding.pry
         @question = params[:question]
         @user = current_account
         @answers = ["As I see it, yes.",
