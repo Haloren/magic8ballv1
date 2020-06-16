@@ -1,7 +1,7 @@
 class AnswerListsController < ApplicationController
 
     post '/answer' do
-        binding.pry
+        # binding.pry
         @question = params[:question]
         @user = current_account
         @answers = ["As I see it, yes.",
@@ -39,10 +39,10 @@ class AnswerListsController < ApplicationController
     end
 
     post '/answerlists' do
-        # binding.pry
+        binding.pry
         @user = current_account
 
-        @list = AnswerList.create(params)    
+        @list = AnswerList.create(params)   # .create , .build , .new & save 
         if @list.valid?
             session[answer_list_id] = @answer_list.id
             redirect to '/answerlists'

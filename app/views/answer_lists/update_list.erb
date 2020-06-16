@@ -3,7 +3,7 @@
 <form action="/answerlists/<%= @answer_list.id %>%" method="POST"> 
     <input type="hidden" name="_method" value="PATCH">
     
-    <input type="text" name="name" value="<%= @answer_list.answer%>">
+    <input type="text" name="list_name" value="<%= @answer_list.list_name%>">
     <br>
     <input type="submit" id="Update List">
     <%# use a for loop %>

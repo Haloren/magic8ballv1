@@ -1,5 +1,5 @@
 ENV['SINATRA_ENV'] ||= "development" #hash ENV key SINATRA_ENV or if doesn't exist development  
-ENV['RAILS_ENV'] = ENV['SINATRA_ENV']
+# ENV['RAILS_ENV'] = ENV['SINATRA_ENV']
 
 require 'bundler/setup'
 Bundler.require(:default, ENV['SINATRA_ENV'])
@@ -12,7 +12,9 @@ database_config = {
     :database => "db/#{ENV['SINATRA_ENV']}.sqlite"  
   }
 }
-
+if ENV["SINATRA_ENV"] == "development"
+  require_relative "../secrets"
+end
 # ActiveRecord::Base.establish_connection(development_database_config)
 set :database, database_config
 
