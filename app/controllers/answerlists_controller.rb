@@ -1,7 +1,7 @@
 class AnswerListsController < ApplicationController
 
     post '/answer' do
-        # binding.pry
+        binding.pry
         @question = params[:question]
         @user = current_account
         @answers = ["As I see it, yes.",
@@ -40,6 +40,7 @@ class AnswerListsController < ApplicationController
 
     post '/answerlists' do
         if logged_in? 
+            # binding.pry
             @user = current_account
             @answer_list = current_account.answer_lists.build(params)
             session[:user_id] = @user.id # session = user id
@@ -63,7 +64,7 @@ class AnswerListsController < ApplicationController
         erb :'answer_lists/select_list'
     end
 
-    get '/answerlists/:id/edit' do
+    get '/answerlists/:id/update' do
         erb :'answer_lists/update_list'
     end
 

@@ -1,17 +1,11 @@
- <h2>Answer Lists</h2>
+<h2>Update, Create, or Delete an Answer List</h2>
 
-<p> Traditional Magic Eight Ball </p>
+<p><a href="/answerlists/new">Create a new list?</a></p>
 
-<% if current_account.answer_lists.length > 0 %>
-    <ul>
-    <% current_account.answer_lists.each do |list| %>
-        <li><a href="/answerlists/<%= list.id %>"><%= list.name %></a></li>
-    <% end %>
-    </ul>
-<% else %>
-    <p> No answer lists saved </p>
-<% end %>
-
-    <li><a href="/answerlists/new">Create a new list?</a></li>
-
-
+<p>if user has custom lists show: "Select a List to Update or Delete"</P>
+<ol>
+<li>Display Magic Eight Ball as the default list and has hard coded answers</li>
+<li>Interate through the current accounts answer lists 
+and list each individually with href link so they can be updated</li>
+<li>If no lists state no custom lists</li>
+</ol>
