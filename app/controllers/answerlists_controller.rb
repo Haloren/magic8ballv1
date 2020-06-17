@@ -1,16 +1,20 @@
 class AnswerListsController < ApplicationController
 
     post '/answer' do
-        binding.pry
+        # binding.pry
         @user = current_account
+        
         #INSTANCE VARIABLE FOR QUESTION PROVIDED BY USER
         @question = params[:question] 
 
-        #INSTANCE VARIABLE FOR LIST SELECTED BY USER
-        @list_name = params[:list_name] 
-
+        # binding.pry
         #@ANSWERS NEEDS TO BE POPULATED WITH THE @LIST_NAME ANSWERS ARRAY
-        @answers = ["You bet"]
+        answer_list = AnswerList.find_by(id: params[:list_id])
+        if answer_list 
+            @answers = answer_list.answers.sample
+        else
+            redirect '/ask_the_eightball'
+        end
 
         erb :'users/eightball_answer'
     end

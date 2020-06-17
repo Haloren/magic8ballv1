@@ -7,10 +7,10 @@
     
     <br>
     <label>Choose your answer list:</label>
-    <select name="list_name" >
+    <select name="list_id" >
             <option value="default" selected> Magic Eight Ball </option>
         <% @user.answer_lists.each do |list|%>
-            <option value="<%= list.list_name %>"><%= list.list_name %></option>
+            <option value="<%= list.id %>"><%= list.list_name %></option>
         <% end %>
     </select>
    

@@ -1,9 +1,6 @@
 <h1><%= @question %>?</h1>
 
-<h4> <%= @list_name %> predicts: </h4>
-
-<% answer = @answers.sample %>
-<h3><%= answer %></h3>
+<h3> <%= @answers.content %> </h3>
 
 <button onClick="window.location.reload();">SHAKE AGAIN</button>
 
