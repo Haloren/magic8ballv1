@@ -41,15 +41,20 @@ class AnswerListsController < ApplicationController
     post '/answerlists' do
         binding.pry
         @user = current_account
+        # INSTANTIATE NEW ANSWERLIST INSTANCE BASED ON PARAMS
+        @answer_list = AnswerList.create(list_name: params[:list_name], user_id: @user.id)
 
-        @list = AnswerList.create(params)   # .create , .build , .new & save 
-        if @list.valid?
-            session[answer_list_id] = @answer_list.id
-            redirect to '/answerlists'
-        else
-            @errors = @answer_list.errors.full_messages
-            erb :'answer_lists/new_list'
-        end        
+        # FILTERING PARAMS TO GET NEW FILTERED ARRAY
+        answers = params[:answers].select {|answer| answer!=""}
+
+        # Asign answers to an answer_list_id
+        answers.each do |answer|
+            Answer.create(content: answer, answer_list_id: @answer_list.id)
+        end
+        # save the array to an instance variable
+        #Answer.all.select {|answer| answer.answer_list_id == @answer_list.id}
+        @answers = AnswerList.last.answers
+        # erb to select list page 
     end
 
     get '/answerlists/new' do

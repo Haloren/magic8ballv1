@@ -12,6 +12,7 @@ class UsersController < ApplicationController
         # binding.pry #check that I have created a user
         # @user = User.create(username: params[:username], email: params[:email], password: params[:password])
         @user = User.create(params)
+        
         if @user.valid? 
             session[:user_id] = @user.id # session = user id
             redirect to "/ask_the_eightball"

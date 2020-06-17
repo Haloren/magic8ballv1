@@ -7,26 +7,15 @@
     <input type="text" placeholder="Name of Answer List" name="list_name" required>
     <br>
     <%# use a for loop %>
-    <br><input type="text" placeholder="Add an Answer HERE" name="answer" maxlength="25" required>
-    <br><input type="text" placeholder="Add an Answer HERE" name="answer" maxlength="25">
-    <br><input type="text" placeholder="Add an Answer HERE" name="answer" maxlength="25">
-    <br><input type="text" placeholder="Add an Answer HERE" name="answer" maxlength="25">
-    <br><input type="text" placeholder="Add an Answer HERE" name="answer" maxlength="25">
-    <br><input type="text" placeholder="Add an Answer HERE" name="answer" maxlength="25">
-    <br><input type="text" placeholder="Add an Answer HERE" name="answer" maxlength="25">
-    <br><input type="text" placeholder="Add an Answer HERE" name="answer" maxlength="25">
-    <br><input type="text" placeholder="Add an Answer HERE" name="answer" maxlength="25">
-    <br><input type="text" placeholder="Add an Answer HERE" name="answer" maxlength="25">
-    <br><input type="text" placeholder="Add an Answer HERE" name="answer" maxlength="25">
-    <br><input type="text" placeholder="Add an Answer HERE" name="answer" maxlength="25">
-    <br><input type="text" placeholder="Add an Answer HERE" name="answer" maxlength="25">
-    <br><input type="text" placeholder="Add an Answer HERE" name="answer" maxlength="25">
-    <br><input type="text" placeholder="Add an Answer HERE" name="answer" maxlength="25">
-    <br><input type="text" placeholder="Add an Answer HERE" name="answer" maxlength="25">
-    <br><input type="text" placeholder="Add an Answer HERE" name="answer" maxlength="25">
-    <br><input type="text" placeholder="Add an Answer HERE" name="answer" maxlength="25">
-    <br><input type="text" placeholder="Add an Answer HERE" name="answer" maxlength="25">
-    <br><input type="text" placeholder="Add an Answer HERE" name="answer" maxlength="25">
+    <% counter = 0%>
+    <% while counter < 20 %>
+        <%if counter < 1%>
+            <br><input type="text" placeholder="Add an Answer HERE" name="answers[]" maxlength="25" required>
+        <% else %>
+            <br><input type="text" placeholder="Add an Answer HERE" name="answers[]" maxlength="25">
+        <% end %>
+        <% counter += 1%>
+    <% end %>
     <br>
     <input type="submit" value="Create List">
 
