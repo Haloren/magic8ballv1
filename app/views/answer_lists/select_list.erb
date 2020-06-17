@@ -2,13 +2,12 @@
 
 <p><a href="/answerlists/new">Create a new list?</a></p>
 
+<% if @user.answer_lists.size > 1 %>
+<p>Select a List Below to Update or Delete</p>
+<% end %>
+
 <ol>
-
-    <li>Display Magic Eight Ball as the default list and has hard coded answers</li>
-    <br>
-    <p>Select a List Below to Update or Delete (this line shows if current_account.answer_lists > 1)</p>
-
-    <li>Interate through the current accounts answer lists 
-    and list each individually with href link so they can be updated or deleted</li>
-
+    <% @user.answer_lists.each do |list|%>
+        <li><a href ='/answerlists/:id/update'><%= list.list_name %> </a></li>
+    <% end %>
 </ol>

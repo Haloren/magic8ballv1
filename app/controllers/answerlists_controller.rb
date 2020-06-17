@@ -29,9 +29,11 @@ class AnswerListsController < ApplicationController
     end
 
     get '/answerlists' do
+        # binding.pry
         if logged_in?
             @user = current_account
-            #@answerlists = current_account.answer_lists
+            @answer_lists = @user.answer_lists
+            # binding.pry
             erb :'answer_lists/select_list'
         else
             redirect to '/login'
@@ -39,7 +41,7 @@ class AnswerListsController < ApplicationController
     end
 
     post '/answerlists' do
-        binding.pry
+        # binding.pry
         @user = current_account
         # INSTANTIATE NEW ANSWERLIST INSTANCE BASED ON PARAMS
         @answer_list = AnswerList.create(list_name: params[:list_name], user_id: @user.id)
@@ -54,7 +56,8 @@ class AnswerListsController < ApplicationController
         # save the array to an instance variable
         #Answer.all.select {|answer| answer.answer_list_id == @answer_list.id}
         @answers = AnswerList.last.answers
-        # erb to select list page 
+        binding.pry
+        erb :'/answer_lists/select_list' 
     end
 
     get '/answerlists/new' do

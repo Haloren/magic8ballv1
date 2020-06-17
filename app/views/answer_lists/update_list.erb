@@ -1,39 +1,28 @@
-<h1>Update <%= @answer_list.answer %> here</h1>
+<h1>Update or Delete your Answer List</h1>
 
-<form action="/answerlists/<%= @answer_list.id %>%" method="POST"> 
+<form action="/answerlists/ANSWER LIST ID" method="POST"> 
     <input type="hidden" name="_method" value="PATCH">
     
-    <input type="text" name="list_name" value="<%= @answer_list.list_name%>">
+    <input type="submit" value="Update List">
     <br>
-    <input type="submit" id="Update List">
-    <%# use a for loop %>
-    <br><input type="text" name="ans1" value="<%= @answer_list.answer%>" maxlength="25">
-    <br><input type="text" name="ans2" value="<%= @answer_list.answer%>" maxlength="25">
-    <br><input type="text" name="ans3" value="<%= @answer_list.answer%>" maxlength="25">
-    <br><input type="text" name="ans4" value="<%= @answer_list.answer%>" maxlength="25">
-    <br><input type="text" name="ans5" value="<%= @answer_list.answer%>" maxlength="25">
-    <br><input type="text" name="ans6" value="<%= @answer_list.answer%>" maxlength="25">
-    <br><input type="text" name="ans7" value="<%= @answer_list.answer%>" maxlength="25">
-    <br><input type="text" name="ans8" value="<%= @answer_list.answer%>" maxlength="25">
-    <br><input type="text" name="ans9" value="<%= @answer_list.answer%>" maxlength="25">
-    <br><input type="text" name="ans10" value="<%= @answer_list.answer%>" maxlength="25">
-    <br><input type="text" name="ans11" value="<%= @answer_list.answer%>" maxlength="25">
-    <br><input type="text" name="ans12" value="<%= @answer_list.answer%>" maxlength="25">
-    <br><input type="text" name="ans13" value="<%= @answer_list.answer%>" maxlength="25">
-    <br><input type="text" name="ans14" value="<%= @answer_list.answer%>" maxlength="25">
-    <br><input type="text" name="ans15" value="<%= @answer_list.answer%>" maxlength="25">
-    <br><input type="text" name="ans16" value="<%= @answer_list.answer%>" maxlength="25">
-    <br><input type="text" name="ans17" value="<%= @answer_list.answer%>" maxlength="25">
-    <br><input type="text" name="ans18" value="<%= @answer_list.answer%>" maxlength="25">
-    <br><input type="text" name="ans19" value="<%= @answer_list.answer%>" maxlength="25">
-    <br><input type="text" name="ans20" value="<%= @answer_list.answer%>" maxlength="25">
+    <input type="text" name="Name of Answer List" value="list_name" required>
+   
+    <% counter = 0%>
+    <% while counter < 20 %>
+        <%if counter < 1%>
+            <br><input type="text" placeholder="Add an Answer HERE" name="answers[]" maxlength="25" required>
+        <% else %>
+            <br><input type="text" placeholder="Add an Answer HERE" name="answers[]" maxlength="25">
+        <% end %>
+        <% counter += 1%>
+    <% end %>
     <br>
-    <input type="submit" id="Update List">
+    <input type="submit" value="Update List">
 
     <p><a href="/answerlists">GO BACK</a></p>
 </form>
 
-<form action="/answerlists/<%=@answer_list.id%>/delete" method="POST">
+<form action="/answerlists/<%= %>/delete" method="POST">
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="DELETE LIST">
 </form><br>
