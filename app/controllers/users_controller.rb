@@ -48,6 +48,8 @@ class UsersController < ApplicationController
         authenticate
         if logged_in? #should I "authenticate" here instead of "logged_in?"? Am I checking this twice?
             @user = current_account #add/make a helper method for this?
+            @answer_lists = @user.answer_lists
+            # binding.pry
             erb :'users/ask_question'
         else
             redirect to '/login'

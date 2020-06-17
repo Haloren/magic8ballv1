@@ -21,6 +21,7 @@ class ApplicationController < Sinatra::Base
     
     helpers do 
         def current_account
+            #check for a current account or find it 
             @current_account ||= User.find_by_id(session[:user_id])
         end
        
