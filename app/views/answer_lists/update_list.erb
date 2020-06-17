@@ -3,26 +3,27 @@
 <form action="/answerlists/ANSWER LIST ID" method="POST"> 
     <input type="hidden" name="_method" value="PATCH">
     
-    <input type="submit" value="Update List">
+    <input type="submit" value="Update">
     <br>
-    <input type="text" name="Name of Answer List" value="list_name" required>
-   
+    <input type="text" name="list_name" value="<%= %>" placeholder="Name of Answer List" required>
+    <br>
+    
     <% counter = 0%>
     <% while counter < 20 %>
         <%if counter < 1%>
-            <br><input type="text" placeholder="Add an Answer HERE" name="answers[]" maxlength="25" required>
+            <br><input type="text" name="answers[]" value="<%= %>" placeholder="Add an Answer HERE" maxlength="25" required>
         <% else %>
-            <br><input type="text" placeholder="Add an Answer HERE" name="answers[]" maxlength="25">
+            <br><input type="text" name="answers[]" value="<%= %>" placeholder="Add an Answer HERE" maxlength="25">
         <% end %>
         <% counter += 1%>
     <% end %>
     <br>
-    <input type="submit" value="Update List">
+    <input type="submit" value="Update">
 
-    <p><a href="/answerlists">GO BACK</a></p>
 </form>
 
+<br>
 <form action="/answerlists/<%= %>/delete" method="POST">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="DELETE LIST">
+    <input type="submit" value="Delete">
 </form><br>

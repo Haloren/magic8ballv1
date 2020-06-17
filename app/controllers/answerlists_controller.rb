@@ -56,7 +56,7 @@ class AnswerListsController < ApplicationController
         # save the array to an instance variable
         #Answer.all.select {|answer| answer.answer_list_id == @answer_list.id}
         @answers = AnswerList.last.answers
-        binding.pry
+        # binding.pry
         erb :'/answer_lists/select_list' 
     end
 
@@ -90,13 +90,8 @@ class AnswerListsController < ApplicationController
 
     delete '/answerlists/:id/delete' do
         @user = current_account
-        @answer_list = AnswerList.find(params[:id])
-        if logged_in? && @answer_list.user == current_account
-            @answer_list.destroy
-            redirect to '/answerlists'
-        else
-            redirect to '/login'
-        end
+        
+        redirect to '/answerlists'
     end
     
 end
