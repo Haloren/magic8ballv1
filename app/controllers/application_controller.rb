@@ -33,31 +33,28 @@ class ApplicationController < Sinatra::Base
             redirect '/login' if !logged_in?
         end
 
-        def default_list
-        list_name: "Magic Eight Ball"
-
-        answers = [
-            {content: "As I see it, yes.", answer_list_id: 1},
-            {content: "Ask again later.", answer_list_id: 1},
-            {content: "Better not tell you now.", answer_list_id: 1},
-            {content: "Cannot predict now.", answer_list_id: 1},
-            {content: "Concentrate and ask again.", answer_list_id: 1},
-            {content: "Don’t count on it.", answer_list_id: 1},
-            {content: "It is certain.", answer_list_id: 1},
-            {content: "It is decidedly so.", answer_list_id: 1},
-            {content: "Most likely.", answer_list_id: 1},
-            {content: "My reply is no.", answer_list_id: 1},
-            {content: "My sources say no.", answer_list_id: 1},
-            {content: "Outlook not so good.", answer_list_id: 1},
-            {content: "Outlook good.", answer_list_id: 1},
-            {content: "Reply hazy, try again.", answer_list_id: 1},
-            {content: "Signs point to yes.", answer_list_id: 1},
-            {content: "Very doubtful.", answer_list_id: 1},
-            {content: "Without a doubt.", answer_list_id: 1},
-            {content: "Yes.", answer_list_id: 1},
-            {content: "Yes – definitely.", answer_list_id: 1},
-            {content: "You may rely on it.", answer_list_id: 1},
-        ]
+        def default_answers
+            default == "default"
+            @default = ["As I see it, yes.",
+                "Ask again later.",
+                "Better not tell you now.",
+                "Cannot predict now.",
+                "Concentrate and ask again.",
+                "Don’t count on it.",
+                "It is certain.",
+                "It is decidedly so.",
+                "Most likely.",
+                "My reply is no.",
+                "My sources say no.",
+                "Outlook not so good.",
+                "Outlook good.",
+                "Reply hazy, try again.",
+                "Signs point to yes.",
+                "Very doubtful.",
+                "Without a doubt.",
+                "Yes.",
+                "Yes – definitely.",
+                "You may rely on it."].sample
         end
 
     end

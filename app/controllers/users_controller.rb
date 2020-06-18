@@ -50,7 +50,6 @@ class UsersController < ApplicationController
             @user = current_account #add/make a helper method for this?
             @answer_lists = @user.answer_lists
 
-            # binding.pry
             erb :'users/ask_question'
         else
             redirect to '/login'

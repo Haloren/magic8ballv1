@@ -1,7 +1,13 @@
 <h1><%= @question %>?</h1>
 
-<h3> <%= @answer.content %> </h3>
+<%# binding.pry %>
+<% if @answer.nil? %>
+    <h3> <%= @default %>
+<% else %>
+    <h3> <%= @answer.content %> </h3>
+<% end %>
 
+<br><br>
 <button onClick="window.location.reload();">SHAKE AGAIN</button>
 
 <br>
