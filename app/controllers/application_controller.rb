@@ -34,7 +34,6 @@ class ApplicationController < Sinatra::Base
         end
 
         def default_answers
-            default == "default"
             @default = ["As I see it, yes.",
                 "Ask again later.",
                 "Better not tell you now.",
