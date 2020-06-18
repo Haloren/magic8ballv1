@@ -10,8 +10,10 @@ class AnswerListsController < ApplicationController
         # binding.pry
         #@ANSWERS NEEDS TO BE POPULATED WITH THE @LIST_NAME ANSWERS ARRAY
         answer_list = AnswerList.find_by(id: params[:list_id])
-        if answer_list 
-            @answers = answer_list.answers.sample
+        if answer_list
+            
+            @answers = answer_list.answers.select { |answer| answer.content != ""}
+            @answer = @answers.sample
         else
             redirect '/ask_the_eightball'
         end
@@ -24,7 +26,6 @@ class AnswerListsController < ApplicationController
         if logged_in?
             @user = current_account
             @answer_lists = @user.answer_lists
-            # binding.pry
             erb :'answer_lists/select_list'
         else
             redirect to '/login'
@@ -37,16 +38,18 @@ class AnswerListsController < ApplicationController
         # INSTANTIATE NEW ANSWERLIST INSTANCE BASED ON PARAMS
         @answer_list = AnswerList.create(list_name: params[:list_name], user_id: @user.id)
 
-        # FILTERING PARAMS TO GET NEW FILTERED ARRAY
-        answers = params[:answers].select {|answer| answer!=""}
-
+        
         # Asign answers to an answer_list_id
-        answers.each do |answer|
+        params[:answers].each do |answer|
             Answer.create(content: answer, answer_list_id: @answer_list.id)
         end
+
+        # FILTERING PARAMS TO GET NEW FILTERED ARRAY
+        # answers = params[:answers].select {|answer| answer!=""}
+
         # save the array to an instance variable
         #Answer.all.select {|answer| answer.answer_list_id == @answer_list.id}
-        @answers = AnswerList.last.answers
+        @answers = @answer_list.answers.select {|answer| answer!=""}
         # binding.pry
         erb :'/answer_lists/select_list' 
     end
@@ -66,21 +69,43 @@ class AnswerListsController < ApplicationController
     end
 
     get '/answerlists/:id/update' do
+        # binding.pry
         if logged_in?
             @user = current_account 
+            @list = AnswerList.find_by(id: params[:id])
+            # binding.pry
             erb :'answer_lists/update_list'
         else 
             redirect to '/login'
         end
     end
-
+    
     patch '/answerlists/:id' do
         @user = current_account
-        erb :'answer_lists/update_list'
+        @list = AnswerList.find_by(id: params[:id])
+        # binding.pry
+        counter = 0
+        while counter < 20
+            old_answer = @list.answers[counter].content
+            new_answer = params[:answers][counter]
+            # binding.pry
+            if old_answer != new_answer
+                @list.answers[counter].content = params[:answers][counter]
+                @list.answers[counter].save
+            end
+            counter += 1
+        end
+        # binding.pry
+        @list.save
+
+        erb :'answer_lists/select_list'
     end
 
     delete '/answerlists/:id/delete' do
         @user = current_account
+        # binding.pry
+        @list = AnswerList.find_by(id: params[:id])
+        @list.destroy
         
         redirect to '/answerlists'
     end

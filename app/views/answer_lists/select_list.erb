@@ -8,6 +8,6 @@
 
 <ol>
     <% @user.answer_lists.each do |list|%>
-        <li><a href ='/answerlists/:id/update'><%= list.list_name %> </a></li>
+        <li><a href ='/answerlists/<%= list.id %>/update'><%= list.list_name %> </a></li>
     <% end %>
 </ol>

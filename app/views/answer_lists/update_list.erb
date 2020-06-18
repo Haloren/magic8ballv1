@@ -1,29 +1,35 @@
 <h1>Update or Delete your Answer List</h1>
 
-<form action="/answerlists/ANSWER LIST ID" method="POST"> 
+<form action="/answerlists/<%= @list.id %>" method="POST"> 
     <input type="hidden" name="_method" value="PATCH">
     
     <input type="submit" value="Update">
     <br>
-    <input type="text" name="list_name" value="<%= %>" placeholder="Name of Answer List" required>
+    <input type="text" name="list_name" value="<%= @list.list_name %>" placeholder="Name of Answer List" required>
     <br>
     
     <% counter = 0%>
     <% while counter < 20 %>
         <%if counter < 1%>
-            <br><input type="text" name="answers[]" value="<%= %>" placeholder="Add an Answer HERE" maxlength="25" required>
+            <br><input type="text" name="answers[]" value="<%= @list.answers[counter].content  %>" placeholder="Add an Answer HERE" maxlength="25" required>
         <% else %>
-            <br><input type="text" name="answers[]" value="<%= %>" placeholder="Add an Answer HERE" maxlength="25">
+            <%if @list.answers[counter].nil?%>
+                <br><input type="text" name="answers[]" value="" placeholder="Add an Answer HERE" maxlength="25">
+            <% else %>
+                <br><input type="text" name="answers[]" value="<%= @list.answers[counter].content %>" placeholder="Add an Answer HERE" maxlength="25">
+            <% end %>
         <% end %>
         <% counter += 1%>
     <% end %>
+
     <br>
     <input type="submit" value="Update">
 
 </form>
 
 <br>
-<form action="/answerlists/<%= %>/delete" method="POST">
+<form action="/answerlists/<%= @list.id %>/delete" method="POST">
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete">
-</form><br>
+</form>
+<br>

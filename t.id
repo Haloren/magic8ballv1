@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /mnt/c/Users/mcken/Documents/GitHub/1Projects/magic8ballv1/app/views/answer_lists/update_list.erb:10 self.__tilt_70368598841700:
+
+     [1;34m5[0m:     
+     [1;34m6[0m:     <input type="submit" value="Update">
+     [1;34m7[0m:     <br>
+     [1;34m8[0m:     <input type="text" name="list_name" value="<%= @list.list_name %>" placeholder="Name of Answer List" required>
+     [1;34m9[0m:     <br>
+ => [1;34m10[0m:     <% binding.pry %>
+    [1;34m11[0m:     <% counter = 0%>
+    [1;34m12[0m:     <% while counter < 20 %>
+    [1;34m13[0m:         <%if counter < 1%>
+    [1;34m14[0m:             <br><input type="text" name="answers[]" value="<%=  %>" placeholder="Add an Answer HERE" maxlength="25" required>
+    [1;34m15[0m:         <% else %>
+
