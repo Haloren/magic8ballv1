@@ -1,6 +1,7 @@
 class AnswerListsController < ApplicationController
 
     post '/answer' do
+        authenticate   
         # binding.pry
         @user = current_account
         
@@ -28,17 +29,19 @@ class AnswerListsController < ApplicationController
     end
 
     get '/answerlists' do
+        authenticate
         # binding.pry
-        if logged_in?
+        # if logged_in?
             @user = current_account
             @answer_lists = @user.answer_lists
             erb :'answer_lists/select_list'
-        else
-            redirect to '/login'
-        end
+        # else
+        #     redirect to '/login'
+        # end
     end
 
     post '/answerlists' do
+        authenticate
         # binding.pry
         @user = current_account
         # INSTANTIATE NEW ANSWERLIST INSTANCE BASED ON PARAMS
@@ -61,32 +64,36 @@ class AnswerListsController < ApplicationController
     end
 
     get '/answerlists/new' do
-        if logged_in?
+        authenticate
+        # if logged_in?
             @user = current_account
             erb :'answer_lists/new_list'
-        else
-            redirect to '/login'
-        end  
+        # else
+        #     redirect to '/login'
+        # end  
     end
        
     get '/answerlists/:id' do
+        authenticate
         @user = current_account
         erb :'answer_lists/select_list'
     end
 
     get '/answerlists/:id/update' do
+        authenticate
         # binding.pry
-        if logged_in?
+        # if logged_in?
             @user = current_account 
             @list = AnswerList.find_by(id: params[:id])
             # binding.pry
             erb :'answer_lists/update_list'
-        else 
-            redirect to '/login'
-        end
+        # else 
+        #     redirect to '/login'
+        # end
     end
     
     patch '/answerlists/:id' do
+        authenticate
         @user = current_account
         @list = AnswerList.find_by(id: params[:id])
         # binding.pry
@@ -108,6 +115,7 @@ class AnswerListsController < ApplicationController
     end
 
     delete '/answerlists/:id/delete' do
+        authenticate
         @user = current_account
         # binding.pry
         @list = AnswerList.find_by(id: params[:id])

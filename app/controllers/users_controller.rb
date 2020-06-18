@@ -46,14 +46,14 @@ class UsersController < ApplicationController
     get '/ask_the_eightball' do
         # binding.pry
         authenticate
-        if logged_in? #should I "authenticate" here instead of "logged_in?"? Am I checking this twice?
+        # if logged_in? #should I "authenticate" here instead of "logged_in?"? Am I checking this twice?
             @user = current_account #add/make a helper method for this?
             @answer_lists = @user.answer_lists
 
             erb :'users/ask_question'
-        else
-            redirect to '/login'
-        end
+        # else
+        #     redirect to '/login'
+        # end
     end
 
     get '/logout' do
