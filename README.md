@@ -4,10 +4,12 @@ or decide your own fate by creating your own custom answers to appear when you a
 - Can't decide where to eat? then make a list of places to go and ask the Eight Ball to decide for you.<br>
 - Can't decide what movie to watch? then make a list of movies and ask the Eight Ball to decide for you.<br>
 What can the Eight Ball help decide for you?<br>
+
 # Install Instructions
 1. If you'd like to check this out yourself fork it from GitHub
 2. In the terminal run bundle
 3. In the terminal run shotgun to start on your local server
+
 # Usage
 If you dont already have an account sign up or login.
 ### Traditional Eight Ball
@@ -43,9 +45,6 @@ If you dont already have an account sign up or login.
 
 # Contributors Guide
 Bug reports and pull requests are welcome on GitHub. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-# Video Walkthrough 
-YouTube Link: 
 
 # License
 Copyright 2020 (Kyle R. McKenna)
