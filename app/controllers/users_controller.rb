@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     post '/login' do
         @user = User.find_by(email: params[:email])
        
-        if @user && @user.authenticate(params[:password])
+        if @user && @user.authenticate(params[:password]) #authenticate from bcrypt
             session[:user_id] = @user.id
             redirect to "/ask_the_eightball"
         else
