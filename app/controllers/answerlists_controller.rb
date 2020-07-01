@@ -11,13 +11,14 @@ class AnswerListsController < ApplicationController
 
         # binding.pry
         if default == "default"
-            default_answers #HELP THAT CALLS .SAMPLE ON ALL DEFAULT ANSWERS 
+            default_answers #HELPER THAT CALLS .SAMPLE ON ALL DEFAULT ANSWERS 
 
         else
             # binding.pry
             #@ANSWERS NEEDS TO BE POPULATED WITH AN ARRAY
             answer_list = AnswerList.find_by(id: params[:list_id])
             if answer_list
+                # look at all answers and filter out blank content
                 @answers = answer_list.answers.select { |answer| answer.content != ""}
                 @answer = @answers.sample
             else
@@ -77,7 +78,11 @@ class AnswerListsController < ApplicationController
         authenticate
         @list = AnswerList.find_by(id: params[:id])
         # binding.pry
-
+        
+        if @list == nil 
+            redirect to '/ask_the_eightball'
+        end
+        
         if logged_in? && @list.user == current_account
 
             @user = current_account
@@ -92,24 +97,20 @@ class AnswerListsController < ApplicationController
     get '/answerlists/:id/update' do
         authenticate
         @list = AnswerList.find_by(id: params[:id])
-        # binding.pry
+        #  binding.pry
         
         # if @list == nil
-           
         #     redirect to '/ask_the_eightball'
+        # end
+
+        check_list
 
 
-        if logged_in? && @list.user == current_account
+        @user = current_account
+        # binding.pry
+        erb :'answer_lists/update_list' 
 
-            @user = current_account
-            # binding.pry
-            erb :'answer_lists/update_list' 
-
-        else
-            # redirect to '/login'
-            redirect to '/ask_the_eightball'
-            
-        end
+        
     end
     
     patch '/answerlists/:id' do
@@ -120,11 +121,15 @@ class AnswerListsController < ApplicationController
         if logged_in? && @list.user == current_account
 
             @user = current_account
+            # binding.pry 
+            @list.list_name = params[:list_name]
+
             counter = 0
             while counter < 20
                 old_answer = @list.answers[counter].content
                 new_answer = params[:answers][counter]
                 # binding.pry
+                #keep old answer or if changed replace with new answer
                 if old_answer != new_answer
                     @list.answers[counter].content = params[:answers][counter]
                     @list.answers[counter].save
@@ -134,7 +139,7 @@ class AnswerListsController < ApplicationController
             # binding.pry
             @list.save
 
-            erb :'answer_lists/select_list'
+            redirect to '/answerlists'
         else
             # redirect to '/login'
             redirect to '/ask_the_eightball'

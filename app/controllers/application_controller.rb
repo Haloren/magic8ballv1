@@ -22,7 +22,8 @@ class ApplicationController < Sinatra::Base
     helpers do 
         def current_account
             # binding.pry
-            #check for a current account or find it 
+            # check for a current account or find it 
+            # if @current_account then @current_account or/else @current_account = User's session user id
             @current_account ||= User.find_by_id(session[:user_id])
         end
        
@@ -55,6 +56,14 @@ class ApplicationController < Sinatra::Base
                 "Yes.",
                 "Yes – definitely.",
                 "You may rely on it."].sample
+        end
+
+        # check if a list !exists || list user != 
+        # redirect to /ask_the_eightball
+        def check_list 
+            if !@list || @list.user != current_account
+                redirect to '/ask_the_eightball'
+            end
         end
 
     end
